@@ -1,28 +1,33 @@
 import './ItemListContainer.css'
 import { useState, useEffect} from 'react'
-import {getProducts} from '../../ApiMock'
+import {getProducts, getProductsByTag} from '../../ApiMock'
 import ItemList from '../ItemList/ItemList'
+
+import { useParams } from 'react-router-dom'
 
 const ItemListContainer = ({msg}) => {
     const [products, setProducts] = useState([])
 
-    var xd;
+    const {tagId} = useParams();
+
     useEffect(() => {
-         getProducts()
+
+        const asyncFunc = tagId ? getProductsByTag : getProducts
+
+         asyncFunc(tagId)
             .then(response => {
                 setProducts(response)
-                console.log(response)
             })
             .catch(error => {
                 console.error(error)
             })
-    }, [])
-    console.log(products)
+    }, [tagId])
 
     return (
         <div className='list'>
-            Aquí va ItemListCointainer y este es un string: {msg}
+            <br></br>
             <ItemList products={products}/>
+
         </div>
     )
 }

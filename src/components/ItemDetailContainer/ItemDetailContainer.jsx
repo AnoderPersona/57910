@@ -2,19 +2,24 @@ import './ItemDetailContainer.css'
 import { useState, useEffect } from 'react'
 import {getProductById} from '../../ApiMock'
 import ItemDetail from '../ItemDetail/ItemDetail'
+import {useParams} from 'react-router-dom'
 
 const ItemDetailContainer = () => {
     const [product, setProduct] = useState(null)
 
+    const { itemId } = useParams()
+
     useEffect(() => {
-        getProductById('1')
+        getProductById(itemId)
             .then(response => {
+                console.log( itemId)
                 setProduct(response)
+                console.log(response)
             })
             .catch(error => {
                 console.error(error)
             })
-    }, [])
+    }, [itemId])
 
     return(
         <div className='ItemDetailContainer'>

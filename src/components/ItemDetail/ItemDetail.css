@@ -1,0 +1,23 @@
+.Contenedor-detalle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 100px;
+}
+
+.Panel-detalles{
+    background-color: white;
+    text-align: justify;
+    padding: 30px;
+    color: black;
+    flex: 1;
+}
+
+.ImagenDetalle{
+    flex: 1;
+}
+
+.ItemImg2{
+    width: 150px;
+}

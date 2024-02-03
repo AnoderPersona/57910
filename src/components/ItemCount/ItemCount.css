@@ -1,0 +1,28 @@
+.Controls{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    
+}
+
+.Button{
+    margin-right: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+    font-size: 1.2em;
+    background-color: #70b7e1;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 5px;
+}
+
+.Number{
+    font-size: 1.2em;
+}
+
+.i-carrito{
+    size: 1em;
+}
