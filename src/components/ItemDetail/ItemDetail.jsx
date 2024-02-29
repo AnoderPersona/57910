@@ -1,7 +1,14 @@
 import './ItemDetail.css'
 import ItemCount from '../ItemCount/ItemCount'
+import { useCartContext } from '../../context/cartContext'
 
 const ItemDetail = ({id, nombre, imagen, etiqueta, descripcion, precio, stock}) => {
+    const item = {id: id, nombre: nombre, imagen: imagen, precio: precio}
+    const {addItem} = useCartContext()
+    const onAdd = (count) => {
+        console.log(`Agregaste ${count}, ${item} al carrito`)
+        addItem(item, count)
+    }
     return(
         <article className='Contenedor-detalle'>
             <picture className='ImagenDetalle'>
@@ -25,7 +32,8 @@ const ItemDetail = ({id, nombre, imagen, etiqueta, descripcion, precio, stock}) 
                         Precio: ${precio}
                     </p>
                 </section>
-                <ItemCount initial={1} stock={stock} onAdd={(quantity) => console.log('Cantidad agregada ', quantity)}></ItemCount>
+                <ItemCount initial={1} stock={stock} onAdd={onAdd}></ItemCount>
+                <br></br>
             </div>
         </article>
     )

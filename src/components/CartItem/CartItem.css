@@ -1,0 +1,17 @@
+.texto{
+    color: #091540;
+}
+.elemento{
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    padding: 1%;
+    margin: 0.1%;
+    border-radius: 20px;
+}
+.borrar-btn{
+    color: red;
+    cursor: pointer;
+}

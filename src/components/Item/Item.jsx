@@ -1,8 +1,14 @@
 import './Item.css'
 import ItemCount from '../ItemCount/ItemCount'
 import { Link } from 'react-router-dom'
-const Item = ({id, nombre, imagen, precio, stock}) => {
+import { useCartContext } from '../../context/cartContext'
 
+const Item = ({id, nombre, imagen, precio, stock}) => {
+    const item = {id: id, nombre: nombre, imagen: imagen, precio: precio}
+    const {addItem} = useCartContext()
+    const onAdd = (count) => {
+        addItem(item, count)
+    }
     return (
         
         <article className="CardItem ColorText">
@@ -22,19 +28,11 @@ const Item = ({id, nombre, imagen, precio, stock}) => {
                     ${precio} 
                     <br></br>
                     {stock} en stock
-                    <ItemCount className='Contador' initial={1} stock={stock} onAdd={(quantity) => console.log('Cantidad agregada ', quantity)}></ItemCount>
+                    <ItemCount className='Contador' initial={1} stock={stock} onAdd={onAdd}></ItemCount>
 
                 </label>
 
             </section>
-            <footer>
-             
-            <button className='Carrito'>
-
-                <i className="fi fi-rr-shopping-cart" onClick={() => onAdd(quantity)} disabled={!stock}>
-                </i>
-            </button>
-            </footer>
 
         </article>
 
