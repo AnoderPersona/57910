@@ -1,9 +1,11 @@
 import './ItemListContainer.css'
 import { useState, useEffect} from 'react'
-import {getProducts, getProductsByTag} from '../../ApiMock'
 import ItemList from '../ItemList/ItemList'
 
 import { useParams } from 'react-router-dom'
+
+import { getFirestore, collection, getDocs, query, where} from 'firebase/firestore'
+
 
 const ItemListContainer = ({msg}) => {
     const [products, setProducts] = useState([])
@@ -11,23 +13,18 @@ const ItemListContainer = ({msg}) => {
     const {tagId} = useParams();
 
     useEffect(() => {
-
-        const asyncFunc = tagId ? getProductsByTag : getProducts
-
-         asyncFunc(tagId)
-            .then(response => {
-                setProducts(response)
-            })
-            .catch(error => {
-                console.error(error)
-            })
+        const querydb = getFirestore();
+        const queryCollection = collection(querydb, 'productos')
+        const queryFilter = tagId ? query(queryCollection, where('etiqueta','==', tagId)) : queryCollection;
+        getDocs(queryFilter)
+            .then(res => setProducts(res.docs.map(product => ({id: product.id, ...product.data() }))))
+        
     }, [tagId])
 
     return (
         <div className='list'>
             <br></br>
             <ItemList products={products}/>
-
         </div>
     )
 }

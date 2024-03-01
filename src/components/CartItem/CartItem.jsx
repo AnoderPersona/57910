@@ -10,9 +10,9 @@ const CartItem = (prod) => {
     return(
         <div className='texto elemento'>
             <label>{prod.nombre}</label>
-            <label>${prod.precio}</label>
-            <label>{prod.quantity}</label>
-            <label>${prod.precio * prod.quantity}</label>
+            <label>Precio unitario: ${prod.precio}</label>
+            <label>Cantidad: {prod.quantity}</label>
+            <label>Total: ${prod.precio * prod.quantity}</label>
             <label className='borrar-btn' onClick={() => removeProduct(prod.id)}>X</label>
         </div>
     )
