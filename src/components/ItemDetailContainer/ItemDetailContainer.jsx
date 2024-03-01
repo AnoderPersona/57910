@@ -15,17 +15,6 @@ const ItemDetailContainer = () => {
         getDoc(queryDoc)
             .then(res => setProduct({id:res.id, ...res.data()}))
     }, [])
-    // useEffect(() => {
-    //     getProductById(itemId)
-    //         .then(response => {
-    //             console.log( itemId)
-    //             setProduct(response)
-    //             console.log(response)
-    //         })
-    //         .catch(error => {
-    //             console.error(error)
-    //         })
-    // }, [itemId])
 
     return(
         <div className='ItemDetailContainer'>

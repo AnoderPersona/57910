@@ -11,6 +11,7 @@ const CartProvider = ({ children }) =>{
     const [cart, setCart] = useState([]);
     const [itemsTotal, setItemsTotal] = useState(0);
     const [total, setTotal] = useState(0);
+    const [idCompra, setIdCompra] = useState(0);
 
     const clearCart = () => {
         setCart([]);
@@ -37,7 +38,7 @@ const CartProvider = ({ children }) =>{
 
     }
 
-    const valorDelContexto = {clearCart, isInCart, removeProduct, cart, itemsTotal, addItem, total};
+    const valorDelContexto = {clearCart, isInCart, removeProduct, cart, itemsTotal, addItem, total, idCompra, setIdCompra};
     return <Provider value={valorDelContexto}>{children}</Provider>
 
 }
