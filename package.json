@@ -2,7 +2,7 @@
   "name": "clase2",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://AnoderPersona.github.io/Merkit-react",
+  "homepage": "https://anoderpersona.github.io/Merkit-react",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
